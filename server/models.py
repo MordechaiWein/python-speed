@@ -43,7 +43,6 @@ class User(db.Model, SerializerMixin):
     
     def __repr__(self):
         return f'<Name:{self.username}, Email:{self.email}>'
-    
 
 class Butterfly(db.Model, SerializerMixin):
     __tablename__ = 'butterflies'
