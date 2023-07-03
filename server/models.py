@@ -17,7 +17,6 @@ class User(db.Model, SerializerMixin):
     username = db.Column(db.String, nullable=False)
     email = db.Column(db.String)
     _password_hash = db.Column(db.String)
-    admin = db.Column(db.String, default=False)
     butterflies = db.relationship('Butterfly', backref='user')
     plants = db.relationship('Plant', backref='user')
 
