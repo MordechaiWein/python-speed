@@ -6,9 +6,9 @@ from config import db, bcrypt
 
 butterfly_tags = db.Table('butterfly_tags',
     db.Column('butterfly_id', db.Integer, db.ForeignKey('butterflies.id')),
-    db.Column('tag_id', db.Integer, db.ForeignKey('tags.id'))
+    db.Column('tag_id', db.Integer, db.ForeignKey('tags.id')),
+    db.UniqueConstraint('butterfly_id', 'tag_id', name="_butterfly_id_tag_id")
 )
-
 
 class User(db.Model, SerializerMixin):
     __tablename__= 'users'
