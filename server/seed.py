@@ -8,7 +8,7 @@ from faker import Faker
 
 # Local imports
 from config import db, app, bcrypt
-from models import  User, Plant, Butterfly, Tag
+from models import  User, Plant, Butterfly, Tag, butterfly_tags
 
 if __name__ == '__main__':
     fake = Faker()
@@ -19,6 +19,9 @@ if __name__ == '__main__':
         Plant.query.delete()
         Butterfly.query.delete()
         Tag.query.delete()
+        db.session.execute(butterfly_tags.delete())
+        db.session.commit()
+
                 
         users = []
         butterflies = []
