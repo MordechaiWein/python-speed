@@ -233,8 +233,8 @@ class ButterflyTag(Resource):
             tag = Tag(name=json["name"])
         butterfly = Butterfly.query.filter_by(id=id).first()
         butterfly.tags.append(tag)
+        db.sesion.add(butterfly)
         db.session.commit()
-
         response = make_response(butterfly.to_dict(), 201)
         return response
 

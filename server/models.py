@@ -77,5 +77,5 @@ class Tag(db.Model, SerializerMixin):
     butterflies = db.relationship('Butterfly', secondary=butterfly_tags, back_populates='tags')
 
     def __repr__(self):
-        return f'<Colors:{self.colors}, Primary Food:{self.primary_food}>'
+        return f'<Name:{self.name}>'
 

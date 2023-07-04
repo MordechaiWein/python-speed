@@ -22,8 +22,8 @@ Tag.query.delete()
         
 users = []
 butterflies = []
-plants = []
 tags = []
+plants = []
 
 u1 = User(username=fake.name(), email=fake.email())
 u1.password_hash = bcrypt.generate_password_hash('password1').decode('utf-8')
@@ -74,4 +74,23 @@ b5 = Butterfly(name='New Guinea Birdwing', image='https://miro.medium.com/v2/res
 butterflies.append(b5)
 
 db.session.add_all(butterflies)
+db.session.commit()
+
+butterflies_with_tags = [b.tags.append(rc(tags)) for b in butterflies]
+db.session.add_all(butterflies_with_tags)
+db.session.commit()
+
+p1 = Plant(name='milkweed', genus_species='Asclepias syriaca', growing_zone='3-9')
+plants.append(p1)
+
+p2 = Plant(name='hyssop', genus_species='Hyssopus officinalis', growing_zone='3-9')
+plants.append(p2)
+
+p3 = Plant(name='asters', genus_species='Aster amellus', growing_zone='3-8')
+plants.append(p3)
+
+p4 = Plant(name='liatris', genus_species='Liatris spicata', growing_zone='3-8')
+plants.append(p4)
+
+db.session.add_all(plants)
 db.session.commit()
