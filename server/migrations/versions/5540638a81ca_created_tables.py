@@ -1,8 +1,8 @@
-"""initial commit
+"""created tables
 
-Revision ID: 914cce2929de
+Revision ID: 5540638a81ca
 Revises: 
-Create Date: 2023-07-04 15:31:07.898956
+Create Date: 2023-07-05 14:57:55.782647
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '914cce2929de'
+revision = '5540638a81ca'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -26,15 +26,15 @@ def upgrade():
     op.create_table('users',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('username', sa.String(), nullable=False),
-    sa.Column('email', sa.String(), nullable=True),
+    sa.Column('email', sa.String(), nullable=False),
     sa.Column('_password_hash', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('butterflies',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(), nullable=True),
-    sa.Column('image', sa.String(), nullable=True),
-    sa.Column('user_id', sa.Integer(), nullable=True),
+    sa.Column('name', sa.String(), nullable=False),
+    sa.Column('image', sa.String(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], name=op.f('fk_butterflies_user_id_users')),
     sa.PrimaryKeyConstraint('id')
     )
@@ -44,7 +44,7 @@ def upgrade():
     sa.Column('image', sa.String(), nullable=False),
     sa.Column('genus_species', sa.String(), nullable=False),
     sa.Column('growing_zone', sa.String(), nullable=False),
-    sa.Column('user_id', sa.Integer(), nullable=True),
+    sa.Column('user_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], name=op.f('fk_plants_user_id_users')),
     sa.PrimaryKeyConstraint('id')
     )

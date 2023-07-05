@@ -108,3 +108,5 @@ if __name__ == '__main__':
 
         db.session.add_all(plants)
         db.session.commit()
+
+        print("...data seeding complete!")

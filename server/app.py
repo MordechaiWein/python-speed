@@ -6,10 +6,13 @@
 from flask import request, make_response, session, jsonify, abort
 from flask_restful import Resource
 from werkzeug.exceptions import NotFound
+import ipdb
 
 # Local imports
 from config import app, db, api, bcrypt
 from models import User, Butterfly, Plant, Tag
+
+app.secret_key = b"@~xH\xf2\x10k\x07hp\x85\xa6N\xde\xd4\xcd"
 
 
 class Signup(Resource):
@@ -36,7 +39,7 @@ class Login(Resource):
     def post(self):
         json = request.get_json()
         try:
-            user = User.query.filter_by(name=json["name"]).first()
+            user = User.query.filter_by(username=json["username"]).first()
             if user.authenticate(json["password"]):
                 session["user_id"] = user.id
                 response = make_response(user.to_dict(), 200)
@@ -118,7 +121,7 @@ class ButterflyByID(Resource):
         butterfly = Butterfly.query.filter_by(id=id).first()
         if not butterfly:
             raise NotFound
-        if butterfly.user_id != session['user_id']:
+        if butterfly.user_id != session["user_id"]:
             abort(401, "Unauthorized")
 
         form_json = request.get_json()
@@ -135,12 +138,12 @@ class ButterflyByID(Resource):
         butterfly = Butterfly.query.filter_by(id=id).first()
         if not butterfly:
             raise NotFound
-        if butterfly.user_id != session['user_id']:
+        if butterfly.user_id != session["user_id"]:
             abort(401, "Unauthorized")
         db.session.delete(butterfly)
         db.session.commit()
 
-        response = make_response("", 204)
+        response = make_response("Butterfly deleted", 204)
 
         return response
 
@@ -150,7 +153,7 @@ api.add_resource(ButterflyByID, "/butterflies/<int:id>")
 
 class Plants(Resource):
     def get(self):
-        plant_list = [b.to_dict() for b in Plant.query.all()]
+        plant_list = [p.to_dict() for p in Plant.query.all()]
         response = make_response(
             plant_list,
             200,
@@ -161,9 +164,10 @@ class Plants(Resource):
     def post(self):
         form_json = request.get_json()
         try:
-            new_plant = Butterfly(
+            new_plant = Plant(
                 name=form_json["name"],
                 genus_species=form_json["genus_species"],
+                image=form_json["image"],
                 growing_zone=session["growing_zone"],
             )
         except ValueError as e:
@@ -194,8 +198,8 @@ class PlantByID(Resource):
     def patch(self, id):
         plant = Plant.query.filter_by(id=id).first()
         if not plant:
-                raise NotFound
-        if plant.user_id != session['user_id']:
+            raise NotFound
+        if plant.user_id != session["user_id"]:
             abort(401, "Unauthorized")
         else:
             form_json = request.get_json()
@@ -212,7 +216,7 @@ class PlantByID(Resource):
         plant = Plant.query.filter_by(id=id).first()
         if not plant:
             raise NotFound
-        if plant.user_id != session['user_id']:
+        if plant.user_id != session["user_id"]:
             abort(401, "Unauthorized")
         db.session.delete(plant)
         db.session.commit()
@@ -233,7 +237,7 @@ class ButterflyTag(Resource):
             tag = Tag(name=json["name"])
         butterfly = Butterfly.query.filter_by(id=id).first()
         butterfly.tags.append(tag)
-        db.sesion.add(butterfly)
+        db.session.add(butterfly)
         db.session.commit()
         response = make_response(butterfly.to_dict(), 201)
         return response
