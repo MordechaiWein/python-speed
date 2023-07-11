@@ -61,19 +61,19 @@ if __name__ == '__main__':
         db.session.add_all(tags)
         db.session.commit()
 
-        b1 = Butterfly(name='Monarch', image='https://wallpaperaccess.com/full/527446.jpg', user_id=rc(users).id)
+        b1 = Butterfly(name='Monarch', image='https://wallpaperaccess.com/full/527446.jpg', user_id=rc(users).id, genus_species='Danaus plexippus', conservation_status='endangered')
         butterflies.append(b1)
 
-        b2 = Butterfly(name='Blue Morpho', image='https://cdn.pixabay.com/photo/2013/06/30/18/56/butterfly-142506_1280.jpg', user_id=rc(users).id)
+        b2 = Butterfly(name='Blue Morpho', image='https://cdn.pixabay.com/photo/2013/06/30/18/56/butterfly-142506_1280.jpg', user_id=rc(users).id, genus_species='Morpho achilles', conservation_status='not endangered')
         butterflies.append(b2)
 
-        b3 = Butterfly(name='Glasswing', image='https://cdn.pixabay.com/photo/2021/04/28/17/53/glasswing-butterfly-6214689_1280.jpg', user_id=rc(users).id)
+        b3 = Butterfly(name='Glasswinged', image='https://cdn.pixabay.com/photo/2021/04/28/17/53/glasswing-butterfly-6214689_1280.jpg', user_id=rc(users).id, genus_species='Greta oto', conservation_status='not endangered')
         butterflies.append(b3)
 
-        b4 = Butterfly(name='Saint Francis satyr', image='https://alchetron.com/cdn/saint-francis-satyr-4d941ecc-4836-47b5-bab2-b2e60a03362-resize-750.jpeg', user_id=rc(users).id)
+        b4 = Butterfly(name='Saint Francis\' satyr', image='https://alchetron.com/cdn/saint-francis-satyr-4d941ecc-4836-47b5-bab2-b2e60a03362-resize-750.jpeg', user_id=rc(users).id, genus_species='Neonympha mitchellii francisci)', conservation_status='endangered')
         butterflies.append(b4)
 
-        b5 = Butterfly(name='New Guinea Birdwing', image='https://miro.medium.com/v2/resize:fit:768/1*gZ0XvVXzEWSGeMLuRyspEw.jpeg', user_id=rc(users).id)
+        b5 = Butterfly(name='Queen Alexandra\'s Birdwing', image='https://miro.medium.com/v2/resize:fit:768/1*gZ0XvVXzEWSGeMLuRyspEw.jpeg', user_id=rc(users).id, genus_species='Ornithoptera alexandrae', conservation_status='endangered')
         butterflies.append(b5)
 
         db.session.add_all(butterflies)

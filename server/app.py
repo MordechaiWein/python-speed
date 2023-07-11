@@ -18,10 +18,7 @@ app.secret_key = b"@~xH\xf2\x10k\x07hp\x85\xa6N\xde\xd4\xcd"
 class Signup(Resource):
     def post(self):
         form_json = request.get_json()
-        new_user = User()
-        for attr in form_json:
-            setattr(new_user, attr, form_json[attr])
-        # new_user = User(name=form_json['name'], email=form_json['email'])
+        new_user = User(username=form_json["name"], email=form_json["email"])
         new_user.password_hash = form_json["password"]
         db.session.add(new_user)
         db.session.commit()
@@ -39,7 +36,7 @@ class Login(Resource):
     def post(self):
         json = request.get_json()
         try:
-            user = User.query.filter_by(username=json["username"]).first()
+            user = User.query.filter_by(username=json["name"]).first()
             if user.authenticate(json["password"]):
                 session["user_id"] = user.id
                 response = make_response(user.to_dict(), 200)
@@ -76,13 +73,17 @@ api.add_resource(AuthorizedSessions, "/authorized")
 
 class Butterflies(Resource):
     def get(self):
-        butterfly_list = [b.to_dict() for b in Butterfly.query.all()]
-        response = make_response(
-            butterfly_list,
-            200,
-        )
+        if session["user_id"]:
+            butterfly_list = [b.to_dict() for b in Butterfly.query.all()]
+            response = make_response(
+                butterfly_list,
+                200,
+            )
+            return response
 
-        return response
+        else:
+            response = make_response("Unauthorized", 401)
+            return response
 
     def post(self):
         form_json = request.get_json()
@@ -168,7 +169,8 @@ class Plants(Resource):
                 name=form_json["name"],
                 genus_species=form_json["genus_species"],
                 image=form_json["image"],
-                growing_zone=session["growing_zone"],
+                growing_zone=form_json["growing_zone"],
+                user_id=session["user_id"],
             )
         except ValueError as e:
             abort(422, e.args[0])
@@ -221,7 +223,7 @@ class PlantByID(Resource):
         db.session.delete(plant)
         db.session.commit()
 
-        response = make_response("", 204)
+        response = make_response("Plant Deleted", 204)
 
         return response
 
@@ -230,6 +232,15 @@ api.add_resource(PlantByID, "/plants/<int:id>")
 
 
 class ButterflyTag(Resource):
+    def get(self, id):
+        butterfly = Butterfly.query.get(id)
+        if not butterfly:
+            response = make_response({"error": "Butterfly not found"}, 404)
+        else:
+            tag_list = [tag.to_dict() for tag in butterfly.tags]
+            response = make_response(tag_list, 200)
+        return response
+
     def post(self, id):
         json = request.get_json()
         tag = Tag.query.filter_by(name=json["name"]).first()

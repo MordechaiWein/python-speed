@@ -52,6 +52,8 @@ class Butterfly(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
     image = db.Column(db.String, nullable=False)
+    genus_species = db.Column(db.String, nullable=False)
+    conservation_status = db.Column(db.String, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     tags = db.relationship(
         "Tag", secondary=butterfly_tags, back_populates="butterflies"
