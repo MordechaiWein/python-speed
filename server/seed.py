@@ -61,7 +61,7 @@ if __name__ == '__main__':
         db.session.add_all(tags)
         db.session.commit()
 
-        b1 = Butterfly(name='Monarch', image='https://wallpaperaccess.com/full/527446.jpg', user_id=rc(users).id, genus_species='Danaus plexippus', conservation_status='endangered')
+        b1 = Butterfly(name='Monarch', image='https://wallpaperaccess.com/full/527446.jpg', user_id=4, genus_species='Danaus plexippus', conservation_status='endangered')
         butterflies.append(b1)
 
         b2 = Butterfly(name='Blue Morpho', image='https://cdn.pixabay.com/photo/2013/06/30/18/56/butterfly-142506_1280.jpg', user_id=rc(users).id, genus_species='Morpho achilles', conservation_status='not endangered')

@@ -16,7 +16,7 @@ class User(db.Model, SerializerMixin):
     __tablename__ = "users"
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String, nullable=False)
+    username = db.Column(db.String, unique=True, nullable=False, name='uq_username')
     email = db.Column(db.String, nullable=False)
     _password_hash = db.Column(db.String)
     butterflies = db.relationship("Butterfly", backref="user")

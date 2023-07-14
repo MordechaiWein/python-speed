@@ -1,23 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import Home from "./components/Home";
 import Authentication from "./components/Authentication";
 import NavBar from "./components/NavBar";
 import ButterflyCollection from "./components/ButterflyCollection";
-import ButterflyCard from "./components/ButterflyCard";
 import ButterflyDetails from "./components/ButterflyDetails";
 import ButterflyForm from "./components/ButterflyForm";
 import PlantCollection from "./components/PlantCollection";
-import PlantCard from "./components/PlantCard";
 import PlantDetails from "./components/PlantDetails";
 import PlantForm from "./components/PlantForm";
+import AddToTheGarden from "./components/AddToTheGarden";
+import EditingButterfly from "./components/EditingButterfly";
 
 function App() {
   const [butterflies, setButterflies] = useState([]);
   const [plants, setPlants] = useState([]);
   const [user, setUser] = useState(null);
-  const [tags, setTags] = useState([]);
+  const [butterfly_edit, setButterflyEdit] = useState(false);
   const updateUser = (user) => setUser(user);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchUser();
@@ -61,7 +63,36 @@ function App() {
       }
     });
 
-  const addNewTag = () => {};
+  const addButterfly = (b) => {
+    setButterflies([...butterflies, b]);
+    fetchButterflies();
+  };
+
+  const updateButterfly = (updated_butterfly) =>
+    setButterflies((butterflies) =>
+      butterflies.map((b) => {
+        if (b.id == updated_butterfly.id) {
+          return updated_butterfly;
+        } else {
+          return b;
+        }
+      })
+    );
+
+  const deleteButterfly = (deleted_butterfly) =>
+    setButterflies((butterflies) =>
+      butterflies.filter((b) => b.id !== deleted_butterfly.id)
+    );
+
+  const handleEdit = (butterfly) => {
+    setButterflyEdit(butterfly);
+    navigate(`butterflies/edit/${butterfly.id}`);
+  };
+
+  const addPlant = (p) => {
+    setPlants([...plants, p]);
+    fetchPlants();
+  };
 
   if (!user)
     return (
@@ -82,7 +113,7 @@ function App() {
       <NavBar user={user} setUser={setUser} />
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home username={user.username} />} />
         <Route
           path="/authentication"
           element={<Authentication updateUser={updateUser} />}
@@ -93,16 +124,39 @@ function App() {
             <ButterflyCollection butterflies={butterflies} user={user} />
           }
         />
-        <Route path="/butterflycard" element={<ButterflyCard />} />
-        <Route path="/butterflies/:id" element={<ButterflyDetails />} />
+        <Route
+          path="/butterflies/:id"
+          element={
+            <ButterflyDetails
+              user={user}
+              handleEdit={handleEdit}
+              deleteButterfly={deleteButterfly}
+            />
+          }
+        />
+        <Route
+          path="/butterflies/edit/:id"
+          element={
+            <EditingButterfly
+              butterfly_edit={butterfly_edit}
+              updateButterfly={updateButterfly}
+            />
+          }
+        />
+        /
         <Route path="/butterflies/new" element={<ButterflyForm />} />
         <Route
           path="/plants"
           element={<PlantCollection plants={plants} user={user} />}
         />
-        <Route path="/plantcard" element={<PlantCard />} />
         <Route path="/plants/:id" element={<PlantDetails />} />
-        <Route path="/plants/new" element={<PlantForm />} />
+        <Route path="/plants/new" elemenbt={<PlantForm />} />
+        <Route
+          path="/addtothegarden"
+          element={
+            <AddToTheGarden addButterfly={addButterfly} addPlant={addPlant} />
+          }
+        />
       </Routes>
     </>
   );

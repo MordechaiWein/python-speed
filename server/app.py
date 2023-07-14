@@ -18,7 +18,7 @@ app.secret_key = b"@~xH\xf2\x10k\x07hp\x85\xa6N\xde\xd4\xcd"
 class Signup(Resource):
     def post(self):
         form_json = request.get_json()
-        new_user = User(username=form_json["name"], email=form_json["email"])
+        new_user = User(username=form_json["username"], email=form_json["email"])
         new_user.password_hash = form_json["password"]
         db.session.add(new_user)
         db.session.commit()
@@ -36,7 +36,7 @@ class Login(Resource):
     def post(self):
         json = request.get_json()
         try:
-            user = User.query.filter_by(username=json["name"]).first()
+            user = User.query.filter_by(username=json["username"]).first()
             if user.authenticate(json["password"]):
                 session["user_id"] = user.id
                 response = make_response(user.to_dict(), 200)
@@ -91,6 +91,8 @@ class Butterflies(Resource):
             new_butterfly = Butterfly(
                 name=form_json["name"],
                 image=form_json["image"],
+                genus_species=form_json["genus_species"],
+                conservation_status=form_json["conservation_status"],
                 user_id=session["user_id"],
             )
         except ValueError as e:

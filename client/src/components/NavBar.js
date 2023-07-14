@@ -57,7 +57,12 @@ function NavBar({ user, setUser }) {
         >
           Plant Collection
         </NavLink>
-
+        <NavLink
+          className={(navClass) => (navClass.isActive ? "active_link" : "")}
+          to="/addtothegarden"
+        >
+          Add to the Garden
+        </NavLink>
         <NavLink
           className={(navClass) => (navClass.isActive ? "active_link" : "")}
           to="/authentication"
