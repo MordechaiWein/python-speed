@@ -12,7 +12,7 @@ function NavBar({ user, setUser }) {
     }).then((res) => {
       if (res.ok) {
         setUser(null);
-        navigate("/");
+        navigate("/authentication");
       }
     });
   };

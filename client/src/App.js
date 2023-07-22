@@ -11,8 +11,8 @@ import PlantDetails from "./components/PlantDetails";
 import PlantForm from "./components/PlantForm";
 import AddToTheGarden from "./components/AddToTheGarden";
 import EditingButterfly from "./components/EditingButterfly";
-import './index.css'
-
+import "./index.css";
+import Footer from "./components/Footer";
 function App() {
   const [butterflies, setButterflies] = useState([]);
   const [plants, setPlants] = useState([]);
@@ -25,6 +25,7 @@ function App() {
   useEffect(() => {
     fetchButterflies();
     fetchPlants();
+    fetchUser()
   }, []);
 
   const fetchButterflies = () => {
@@ -158,6 +159,7 @@ function App() {
           }
         />
       </Routes>
+      <Footer/>
     </>
   );
 }

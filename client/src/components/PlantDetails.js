@@ -27,7 +27,7 @@ function PlantDetails() {
     if(error) return <h2>{error}</h2>
     return(
       <>
-        <div>
+        <div className='butterfly-details'>
           <h3>Name:</h3>
           <p>{name}</p>
           <img src={image} alt='plant image'/>

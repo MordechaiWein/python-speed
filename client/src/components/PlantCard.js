@@ -13,7 +13,7 @@ function PlantCard({plant}) {
             <h4>{user.username}</h4>
           </div>
         </div>
-        <Link to={`/butterflies/${id}`}>
+        <Link to={`/plants/${id}`}>
           <div className="image-container">
             <img className="plant-img" src={image} alt={name} />
           </div>

@@ -68,7 +68,8 @@ function ButterflyDetails({ user, handleEdit, deleteButterfly }) {
   }, []);
 
   const handleDelete = (butterfly) => {
-    fetch(`/butterfly/${params.id}`, {
+    console.log(butterfly)
+    fetch(`/butterflies/${butterfly.id}`, {
       method: "DELETE",
     }).then(() => {
       deleteButterfly(butterfly);
@@ -129,7 +130,10 @@ function ButterflyDetails({ user, handleEdit, deleteButterfly }) {
           )}
           {!showTag && (
             <div className="tag-div">
-              <button className="tag-btn" onClick={() => setShowTag((prevState) => !prevState)}>
+              <button
+                className="tag-btn"
+                onClick={() => setShowTag((prevState) => !prevState)}
+              >
                 Add a tag to this butterfly!
               </button>
             </div>

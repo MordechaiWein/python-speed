@@ -83,7 +83,7 @@ label {
     padding: 1rem;
 }
 
-.navWrapper img {
+.navWrapper img, footer img {
     max-width: 15em;
     cursor: pointer;
 }
@@ -329,6 +329,32 @@ label {
     text-decoration: underline;
     font-size: 1rem;
     cursor: pointer;
+}
+
+/* Footer */
+footer {
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #39483a;
+    color: white;
+}
+
+.social-media, .social-media ul {
+    display: flex;
+}
+
+.social-media h3 {
+    margin-right: 10px;
+}
+
+ul {
+    list-style: none;
+}
+
+ul li {
+    margin-right: 10px;
 }
 
 
