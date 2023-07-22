@@ -1,17 +1,25 @@
 import { Link } from "react-router-dom";
 
 function PlantCard({plant}) {
-  const { name, image, id } = plant;
+  const { name, image, id, user } = plant;
 
   return (
-    <>
-      <Link to={`/plants/${id}`}>
-        <div>
-          <h1>{name}</h1>
-          <img src={image} />
+    <div className="plant-card">
+      <div className="plant-wrapper">
+        <div className="details">
+          <h3>{name}</h3>
+          <div>
+            <p>by</p>
+            <h4>{user.username}</h4>
+          </div>
         </div>
-      </Link>
-    </>
+        <Link to={`/butterflies/${id}`}>
+          <div className="image-container">
+            <img className="plant-img" src={image} alt={name} />
+          </div>
+        </Link>
+      </div>
+    </div>
   );
 }
   export default PlantCard;

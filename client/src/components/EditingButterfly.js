@@ -42,7 +42,7 @@ function EditingButterfly({updateButterfly, butterfly_edit}) {
   });
 
   return (
-    <div className="App">
+    <div className="edit-butterfly">
       {formik.errors &&
         Object.values(formik.errors).map((error) => <h2>{error}</h2>)}
       <form onSubmit={formik.handleSubmit}>
@@ -78,9 +78,10 @@ function EditingButterfly({updateButterfly, butterfly_edit}) {
           onChange={formik.handleChange}
         />
 
-        <input type="submit" />
+        <button className="submit-btn">Submit</button>
+
       </form>
-      <button onClick={() => navigate(`/butterflies/${butterfly_edit.id}`)}>Cancel Edit</button>
+      <button className="cancel-btn" onClick={() => navigate(`/butterflies/${butterfly_edit.id}`)}>Cancel Edit</button>
     </div>
   );
 }

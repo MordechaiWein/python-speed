@@ -67,15 +67,14 @@ function ButterflyDetails({ user, handleEdit, deleteButterfly }) {
     });
   }, []);
 
-  
   const handleDelete = (butterfly) => {
     fetch(`/butterfly/${params.id}`, {
-      method: 'DELETE'
-    })
-    .then(() => {
-      deleteButterfly(butterfly)
-      navigate('/butterflies')
-    })}
+      method: "DELETE",
+    }).then(() => {
+      deleteButterfly(butterfly);
+      navigate("/butterflies");
+    });
+  };
 
   const { name, image, genus_species, conservation_status } = butterfly;
 
@@ -84,58 +83,70 @@ function ButterflyDetails({ user, handleEdit, deleteButterfly }) {
     <>
       {deleting ? (
         <>
-        <h1>Are you sure you want to delete this butterfly?</h1>
-        <button onClick={() => handleDelete(butterfly)}>Yes</button>
-        <button onClick={() => setIsDeleting(false)}>No</button>
+          <h1>Are you sure you want to delete this butterfly?</h1>
+          <button onClick={() => handleDelete(butterfly)}>Yes</button>
+          <button onClick={() => setIsDeleting(false)}>No</button>
         </>
       ) : (
         <>
-          <div>
-            <h3>Name:</h3>
-            <p>{name}</p>
+          <div className="butterfly-details">
+            <h3>
+              Name: <span>{name}</span>
+            </h3>
             <img src={image} alt="butterfly image" />
-            <h3>Genus & Species:</h3>
-            <p>{genus_species}</p>
-            <h3>Conservation Status:</h3>
-            <p>{conservation_status}</p>
+            <h3>
+              Genus & Species: <span>{genus_species}</span>
+            </h3>
+            <h3>
+              Conservation Status: <span>{conservation_status}</span>
+            </h3>
           </div>
-          <div>
-            <h3>Tags already added to this butterfly:</h3>
-            {tags.map((tag) => (
-              <ul key={`${params.id}-${tag.name}`}>{tag.name}</ul>
-            ))}
+          <div className="tags-container">
+            <h3>
+              Tags already added to this butterfly:{" "}
+              {tags.map((tag) => (
+                <span key={`${params.id}-${tag.name}`}>{`${tag.name} `}</span>
+              ))}
+            </h3>
           </div>
           {user && user.id === butterfly.user_id && (
-            <>
+            <div className="buttons">
               <button
+                className="edit-btn"
                 onClick={() => {
                   handleEdit(butterfly);
                 }}
               >
                 Edit
               </button>
-              <button onClick={() => setIsDeleting(true)}>Delete</button>
-            </>
+              <button
+                className="delete-btn"
+                onClick={() => setIsDeleting(true)}
+              >
+                Delete
+              </button>
+            </div>
           )}
           {!showTag && (
-            <button onClick={() => setShowTag((prevState) => !prevState)}>
-              Add a tag to this butterfly!
-            </button>
+            <div className="tag-div">
+              <button className="tag-btn" onClick={() => setShowTag((prevState) => !prevState)}>
+                Add a tag to this butterfly!
+              </button>
+            </div>
           )}
           {showTag && (
-            <>
+            <div className="tags-input">
               <input
                 type="text"
                 value={tagInput}
                 onChange={(e) => setTagInput(e.target.value)}
               />
               <button onClick={handleTagSubmit}>Add your tag!</button>
-            </>
+            </div>
           )}
         </>
       )}
-    
     </>
   );
 }
-export default ButterflyDetails
+export default ButterflyDetails;

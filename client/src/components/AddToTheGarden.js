@@ -15,21 +15,21 @@ function AddToTheGarden({ addButterfly, addPlant }) {
   }, [location]);
 
   return (
-    <>
+    <div className="add-to-garden">
       {addingButterfly ? (
         <ButterflyForm addButterfly={addButterfly} />
       ) : addingPlant ? (
         <PlantForm addPlant={addPlant} />
       ) : (
-        <>
+        <div>
           <button onClick={() => setAddingButterfly(true)}>
             Add a Butterfly
           </button>
           <span>or</span>
           <button onClick={() => setAddingPlant(true)}>Add a Plant</button>
-        </>
+        </div>
       )}
-    </>
+    </div>
   );
 }
 export default AddToTheGarden;

@@ -40,7 +40,7 @@ function ButterflyForm({ addButterfly }) {
     },
   });
   return (
-    <div className="App">
+    <div className="butterfly-form">
       <form onSubmit={formik.handleSubmit}>
         <label>Name</label>
         <input
@@ -73,7 +73,8 @@ function ButterflyForm({ addButterfly }) {
           value={formik.values.conservation_status}
           onChange={formik.handleChange}
         />
-        <input type="submit" />
+
+        <button>Submit</button>
       </form>
     </div>
   );

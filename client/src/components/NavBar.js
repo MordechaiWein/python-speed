@@ -1,11 +1,12 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import logo from "../assets/images/logo.png";
 
 function NavBar({ user, setUser }) {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    console.log("clicked");
+  
     fetch("/logout", {
       method: "DELETE",
     }).then((res) => {
@@ -19,6 +20,9 @@ function NavBar({ user, setUser }) {
   if (!user)
     return (
       <div className="navWrapper">
+        <NavLink to="/">
+          <img src={logo} alt="Logo" />{" "}
+        </NavLink>
         <div className="navigation">
           <NavLink
             className={(navClass) => (navClass.isActive ? "active_link" : "")}
@@ -38,6 +42,9 @@ function NavBar({ user, setUser }) {
 
   return (
     <div className="navWrapper">
+      <NavLink to="/">
+          <img src={logo} alt="Logo" />{" "}
+        </NavLink>
       <div className="navigation">
         <NavLink
           className={(navClass) => (navClass.isActive ? "active_link" : "")}

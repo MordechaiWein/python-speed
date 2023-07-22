@@ -11,6 +11,7 @@ import PlantDetails from "./components/PlantDetails";
 import PlantForm from "./components/PlantForm";
 import AddToTheGarden from "./components/AddToTheGarden";
 import EditingButterfly from "./components/EditingButterfly";
+import './index.css'
 
 function App() {
   const [butterflies, setButterflies] = useState([]);
@@ -22,7 +23,6 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchUser();
     fetchButterflies();
     fetchPlants();
   }, []);

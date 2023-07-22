@@ -7,9 +7,9 @@ function ButterflyContainer({butterflies, user}) {
         navigate('/authentication')
     } else {
         return (
-            <div>
-                <h1>Butterfly Garden</h1>
-                <div>
+            <div className="butterfly-collection">
+                <h1>Butterfly Community Collection</h1>
+                <div className="butterfly-container">
                     {butterflies.map(butterfly => <ButterflyCard  key={butterfly.id} butterfly={butterfly}  />)}
                 </div>
             </div>

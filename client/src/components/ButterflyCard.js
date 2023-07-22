@@ -1,17 +1,28 @@
+
 import { Link } from "react-router-dom";
 
 function ButterflyCard({ butterfly }) {
-  const { name, image, id } = butterfly;
+  const { name, image, id, user } = butterfly;
+  
 
   return (
-    <>
-      <Link to={`/butterflies/${id}`}>
-        <div>
-          <h1>{name}</h1>
-          <img src={image} />
+    <div className="butterfly-card">
+      <div className="butterfly-wrapper">
+        <div className="details">
+          <h3>{name}</h3>
+          <div>
+            <p>by</p>
+            <h4>{user.username}</h4>
+          </div>
         </div>
-      </Link>
-    </>
+        <Link to={`/butterflies/${id}`}>
+          <div className="image-container">
+            <img className="butterfly-img" src={image} alt={name} />
+          </div>
+        </Link>
+      </div>
+    </div>
   );
 }
+
 export default ButterflyCard;

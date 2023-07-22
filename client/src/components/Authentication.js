@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
-function Authentication({updateUser}) {
+function Authentication({ updateUser }) {
   const [signUp, setSignUp] = useState(false);
   const [error, setError] = useState(false);
   const navigate = useNavigate();
@@ -22,7 +22,6 @@ function Authentication({updateUser}) {
     },
     validationSchema: formSchema,
     onSubmit: (values, { resetForm }) => {
-      
       fetch(signUp ? "/signup" : "/login", {
         method: "POST",
         headers: {
@@ -49,32 +48,47 @@ function Authentication({updateUser}) {
   });
 
   return (
-    <> 
-    <h2 style={{color:'red'}}> {formik.errors.username}</h2>
-    {error&& <h2 style={{color:'red'}}> {error}</h2>}
-    <h2>Please Log in or Sign up!</h2>
-    <h2>{signUp?'Already a member?':'Not a member?'}</h2>
-    <button onClick={handleClick}>{signUp?'Log In!':'Register now!'}</button>
-    <form onSubmit={formik.handleSubmit}>
-    <label>
-      Username
-      </label>
-    <input type='text' name='username' value={formik.values.username} onChange={formik.handleChange} />
-    <label>
-    Password
-    </label>
-    <input type='password' name='password' value={formik.values.password} onChange={formik.handleChange} />
-    {signUp&&(
-      <>
-      <label>
-      Email
-      </label>
-      <input type='text' name='email' value={formik.values.email} onChange={formik.handleChange} />
-       </>
-    )}
-    <input type='submit' value={signUp?'Sign Up!':'Log In!'} />
-  </form>
-    </>
-)
+    <div className="authentication">
+
+      <h2 style={{ color: "red" }}> {formik.errors.username}</h2>
+      {error && <h2 style={{ color: "red" }}> {error}</h2>}
+      <h2>Please Log in or Sign up!</h2>
+      
+      <form onSubmit={formik.handleSubmit}>
+        <label>Username</label>
+        <input
+          type="text"
+          name="username"
+          value={formik.values.username}
+          onChange={formik.handleChange}
+        />
+        <label>Password</label>
+        <input
+          type="password"
+          name="password"
+          value={formik.values.password}
+          onChange={formik.handleChange}
+        />
+        {signUp && (
+          <>
+            <label>Email</label>
+            <input
+              type="text"
+              name="email"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+            />
+          </>
+        )}
+        <button>{signUp ? "Sign Up!" : "Log In!"}</button>
+      </form>
+      <div className="sign-up">
+      <h2>{signUp ? "Already a member?" : "Not a member?"}</h2>
+      <button onClick={handleClick}>
+        {signUp ? "Log In!" : "Register now!"}
+      </button>
+      </div>
+    </div>
+  );
 }
 export default Authentication;

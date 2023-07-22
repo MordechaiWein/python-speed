@@ -8,9 +8,9 @@ function PlantContainer({plants, user}) {
     navigate('/authentication')
   } else{
     return (
-      <div>
-          <h1>Plant Collection</h1>
-          <div>
+      <div className="plant-collection">
+          <h1>Plant Community Collection</h1>
+          <div className="plant-container">
               {plants.map(plant => <PlantCard  key={plant.id} plant={plant}  />)}
           </div>
       </div>

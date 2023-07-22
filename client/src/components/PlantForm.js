@@ -38,7 +38,7 @@ function PlantForm({ addPlant }) {
     },
   });
   return (
-    <div className="App">
+    <div className="plant-form">
       <form onSubmit={formik.handleSubmit}>
         <label>Name</label>
         <input
@@ -71,7 +71,8 @@ function PlantForm({ addPlant }) {
           value={formik.values.growing_zone}
           onChange={formik.handleChange}
         />
-        <input type="submit" />
+
+        <button>Submit</button>
       </form>
     </div>
   );
