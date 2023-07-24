@@ -1,4 +1,11 @@
-function Home({ username }) {
+import { useEffect } from "react";
+
+function Home({ username, fetchUser }) {
+
+  useEffect(()=> {
+    fetchUser();
+  }, [])
+
   return (
     <div className="home">
       <h1>

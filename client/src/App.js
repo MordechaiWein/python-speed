@@ -101,7 +101,7 @@ function App() {
       <>
         <NavBar user={user} setUser={setUser} />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home fetchUser={fetchUser}/>} />
           <Route
             path="/authentication"
             element={<Authentication updateUser={updateUser} />}
@@ -115,15 +115,20 @@ function App() {
       <NavBar user={user} setUser={setUser} />
 
       <Routes>
-        <Route path="/" element={<Home username={user.username} />} />
+        <Route path="/" element={<Home username={user.username} fetchUser={fetchUser}/>} />
         <Route
           path="/authentication"
           element={<Authentication updateUser={updateUser} />}
         />
         <Route
+          exact
           path="/butterflies"
           element={
-            <ButterflyCollection butterflies={butterflies} user={user} fetchButterflies={fetchButterflies} />
+            <ButterflyCollection
+              butterflies={butterflies}
+              user={user}
+              fetchButterflies={fetchButterflies}
+            />
           }
         />
         <Route
@@ -133,7 +138,7 @@ function App() {
               user={user}
               handleEdit={handleEdit}
               deleteButterfly={deleteButterfly}
-              
+              fetchButterflies={fetchButterflies}
             />
           }
         />

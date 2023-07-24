@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
-function ButterflyForm({ addButterfly }) {
+function ButterflyForm({ addButterfly, fetchButterflies }) {
   const navigate = useNavigate();
   const formSchema = yup.object().shape({
     name: yup.string().required("Must enter a butterfly name"),

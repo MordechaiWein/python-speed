@@ -2,7 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import EditingButterfly from "./EditingButterfly";
 
-function ButterflyDetails({ user, handleEdit, deleteButterfly }) {
+function ButterflyDetails({ user, handleEdit, deleteButterfly, fetchButterflies={fetchButterflies} }) {
   const [deleting, setIsDeleting] = useState(false);
   const [butterfly, setButterfly] = useState({
     name: "",
@@ -15,14 +15,13 @@ function ButterflyDetails({ user, handleEdit, deleteButterfly }) {
   const [showTag, setShowTag] = useState(false);
   const [tagInput, setTagInput] = useState("");
 
+  console.log()
+
   useEffect(() => {
     fetchTags();
-    
+    fetchButterflies();
   }, []);
 
-  // useEffect(() => {
-  //   setIsEditing(false)
-  // }, [location])
 
   const addNewTag = (t) => {
     setTags([...tags, t]);
@@ -69,7 +68,6 @@ function ButterflyDetails({ user, handleEdit, deleteButterfly }) {
   }, []);
 
   const handleDelete = (butterfly) => {
-    console.log(butterfly)
     fetch(`/butterflies/${butterfly.id}`, {
       method: "DELETE",
     }).then(() => {
