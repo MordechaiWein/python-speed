@@ -17,6 +17,7 @@ function ButterflyDetails({ user, handleEdit, deleteButterfly }) {
 
   useEffect(() => {
     fetchTags();
+    
   }, []);
 
   // useEffect(() => {

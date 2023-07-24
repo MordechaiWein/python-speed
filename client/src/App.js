@@ -12,7 +12,8 @@ import PlantForm from "./components/PlantForm";
 import AddToTheGarden from "./components/AddToTheGarden";
 import EditingButterfly from "./components/EditingButterfly";
 import "./index.css";
-import Footer from "./components/Footer";
+import Footer from "./components/footer";
+
 function App() {
   const [butterflies, setButterflies] = useState([]);
   const [plants, setPlants] = useState([]);
@@ -25,7 +26,7 @@ function App() {
   useEffect(() => {
     fetchButterflies();
     fetchPlants();
-    fetchUser()
+    fetchUser();
   }, []);
 
   const fetchButterflies = () => {
@@ -122,7 +123,7 @@ function App() {
         <Route
           path="/butterflies"
           element={
-            <ButterflyCollection butterflies={butterflies} user={user} />
+            <ButterflyCollection butterflies={butterflies} user={user} fetchButterflies={fetchButterflies} />
           }
         />
         <Route
@@ -132,6 +133,7 @@ function App() {
               user={user}
               handleEdit={handleEdit}
               deleteButterfly={deleteButterfly}
+              
             />
           }
         />
@@ -159,7 +161,7 @@ function App() {
           }
         />
       </Routes>
-      <Footer/>
+      <Footer />
     </>
   );
 }

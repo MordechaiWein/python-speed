@@ -1,7 +1,7 @@
 
 import { Link } from "react-router-dom";
 
-function ButterflyCard({ butterfly }) {
+function ButterflyCard( {butterfly} ) {
   const { name, image, id, user } = butterfly;
   
 

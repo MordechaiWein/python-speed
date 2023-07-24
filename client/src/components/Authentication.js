@@ -32,6 +32,7 @@ function Authentication({ updateUser }) {
         if (res.ok) {
           res.json().then((user) => {
             updateUser(user);
+            
             navigate("/");
           });
         } else {
@@ -80,11 +81,11 @@ function Authentication({ updateUser }) {
             />
           </>
         )}
-        <button>{signUp ? "Sign Up!" : "Log In!"}</button>
+        <button type="submit">{signUp ? "Sign Up!" : "Log In!"}</button>
       </form>
       <div className="sign-up">
       <h2>{signUp ? "Already a member?" : "Not a member?"}</h2>
-      <button onClick={handleClick}>
+      <button type="button" onClick={handleClick}>
         {signUp ? "Log In!" : "Register now!"}
       </button>
       </div>

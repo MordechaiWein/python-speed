@@ -1,8 +1,13 @@
 import ButterflyCard from "./ButterflyCard";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
-function ButterflyContainer({butterflies, user}) {
+function ButterflyContainer({butterflies, user, fetchButterflies}) {
     const navigate = useNavigate()
+
+    useEffect(() => {
+        fetchButterflies();
+    }, [])
     if (!user){
         navigate('/authentication')
     } else {
