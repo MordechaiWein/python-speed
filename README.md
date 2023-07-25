@@ -23,22 +23,23 @@ App features :
 
 - Create and account, login, and logout:
 
+![gif1](https://github.com/JosephDSmith/phase-4-project/assets/122189576/7dcc5c10-8cdd-4110-9abe-3eee0986ca1a)
 
 - Navigate through the menu:
 
-
+![gif2](https://github.com/JosephDSmith/phase-4-project/assets/122189576/98283dea-9fb3-4d43-a68e-2f8fd9815a20)
 
 - Access and expand details for the butterfly collection:  
 
-
+![gif3](https://github.com/JosephDSmith/phase-4-project/assets/122189576/e978dca7-81a7-4894-b565-f00d2402b6ec)
 
 - Edit an existing butterfly, or delete an existing butterfly from the collection.
 
-
+![gif4](https://github.com/JosephDSmith/phase-4-project/assets/122189576/60147c67-bb96-48cf-8dcf-51d35603710a)
 
 - Add a plant to the collection:
 
-
+![gif5](https://github.com/JosephDSmith/phase-4-project/assets/122189576/2029e057-76d2-4182-99c7-0695e29a3ae0)
 
 ## Contributing
 
