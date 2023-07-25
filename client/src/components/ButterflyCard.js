@@ -17,7 +17,7 @@ function ButterflyCard( {butterfly} ) {
         </div>
         <Link to={`/butterflies/${id}`}>
           <div className="image-container">
-            <img className="butterfly-img" src={image} alt={name} />
+            <img className="butterfly-img" src={image} alt="butterfly image" />
           </div>
         </Link>
       </div>

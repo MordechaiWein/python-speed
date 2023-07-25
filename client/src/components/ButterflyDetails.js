@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import EditingButterfly from "./EditingButterfly";
+
 
 function ButterflyDetails({ user, handleEdit, deleteButterfly, fetchButterflies={fetchButterflies} }) {
   const [deleting, setIsDeleting] = useState(false);

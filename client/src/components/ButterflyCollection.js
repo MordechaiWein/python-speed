@@ -6,9 +6,9 @@ function ButterflyContainer({butterflies, user, fetchButterflies}) {
     const navigate = useNavigate()
 
     useEffect(() => {
-      
         fetchButterflies();
     }, [])
+    
     if (!user){
         navigate('/authentication')
     } else {

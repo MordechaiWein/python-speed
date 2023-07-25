@@ -73,7 +73,7 @@ function App() {
   const updateButterfly = (updated_butterfly) =>
     setButterflies((butterflies) =>
       butterflies.map((b) => {
-        if (b.id == updated_butterfly.id) {
+        if (b.id === updated_butterfly.id) {
           return updated_butterfly;
         } else {
           return b;

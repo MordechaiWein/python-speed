@@ -15,7 +15,7 @@ function PlantCard({plant}) {
         </div>
         <Link to={`/plants/${id}`}>
           <div className="image-container">
-            <img className="plant-img" src={image} alt={name} />
+            <img className="plant-img" src={image} alt="plant image" />
           </div>
         </Link>
       </div>

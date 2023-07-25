@@ -41,7 +41,7 @@ function Home({ username, fetchUser }) {
               butterflies to your garden.
             </p>
           </div>
-          <img src="https://images.pexels.com/photos/4751969/pexels-photo-4751969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+          <img src="https://images.pexels.com/photos/4751969/pexels-photo-4751969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="picture"/>
         </div>
       </section>
       <section>
@@ -75,7 +75,7 @@ function Home({ username, fetchUser }) {
               it may be worth searching out some of these double duty offerings.
             </p>
           </div>
-          <img src="https://images.pexels.com/photos/4750335/pexels-photo-4750335.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+          <img src="https://images.pexels.com/photos/4750335/pexels-photo-4750335.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="picture"/>
         </div>
       </section>
       <section>
@@ -104,7 +104,7 @@ function Home({ username, fetchUser }) {
               choose from that act as nectar or caterpillar food plants.
             </p>
           </div>
-          <img src="https://images.pexels.com/photos/4207905/pexels-photo-4207905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+          <img src="https://images.pexels.com/photos/4207905/pexels-photo-4207905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="picture" />
         </div>
       </section>
     </div>
