@@ -2,7 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 
-function ButterflyDetails({ user, handleEdit, deleteButterfly, fetchButterflies={fetchButterflies} }) {
+function ButterflyDetails({ user, handleEdit, deleteButterfly, fetchButterflies }) {
   const [deleting, setIsDeleting] = useState(false);
   const [butterfly, setButterfly] = useState({
     name: "",
@@ -17,10 +17,10 @@ function ButterflyDetails({ user, handleEdit, deleteButterfly, fetchButterflies=
 
   console.log()
 
-  useEffect(() => {
-    fetchTags();
-    fetchButterflies();
-  }, []);
+  // useEffect(() => {
+  //   fetchTags();
+  //   fetchButterflies();
+  // }, [params]);
 
 
   const addNewTag = (t) => {
@@ -65,7 +65,9 @@ function ButterflyDetails({ user, handleEdit, deleteButterfly, fetchButterflies=
         res.json().then((data) => setError(data.error));
       }
     });
-  }, []);
+    fetchTags();
+    fetchButterflies();
+  }, [params.id]);
 
   const handleDelete = (butterfly) => {
     fetch(`/butterflies/${butterfly.id}`, {

@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 
 function EditingButterfly({updateButterfly, butterfly_edit}) {
+  const [errors, setErrors] = useState(false);
   const navigate = useNavigate();
   const formSchema = yup.object().shape({
     name: yup.string().required("Must enter a name"),

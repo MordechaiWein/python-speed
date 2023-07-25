@@ -20,7 +20,7 @@ function PlantDetails() {
         res.json().then((data) => setError(data.error));
       }
     });
-  }, []);
+  }, [params.id]);
 
   const { name, image, genus_species, growing_zone } = plant;
   if (error) return <h2>{error}</h2>;

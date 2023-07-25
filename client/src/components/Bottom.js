@@ -1,7 +1,6 @@
-import React from "react";
 import logo from "../assets/images/logo.png";
 
-function footer() {
+function Bottom() {
   return (
     <footer>
       <img src={logo} />
@@ -18,4 +17,4 @@ function footer() {
   );
 }
 
-export default footer;
+export default Bottom;

@@ -12,7 +12,7 @@ import PlantForm from "./components/PlantForm";
 import AddToTheGarden from "./components/AddToTheGarden";
 import EditingButterfly from "./components/EditingButterfly";
 import "./index.css";
-import Footer from "./components/footer";
+import Bottom from "./components/Bottom";
 
 function App() {
   const [butterflies, setButterflies] = useState([]);
@@ -24,10 +24,13 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchButterflies();
-    fetchPlants();
     fetchUser();
   }, []);
+
+  useEffect(() => {
+    fetchButterflies();
+    fetchPlants();
+  }, [user]);
 
   const fetchButterflies = () => {
     fetch("/butterflies")
@@ -101,7 +104,7 @@ function App() {
       <>
         <NavBar user={user} setUser={setUser} />
         <Routes>
-          <Route path="/" element={<Home fetchUser={fetchUser}/>} />
+          <Route path="/" element={<Home fetchUser={fetchUser} />} />
           <Route
             path="/authentication"
             element={<Authentication updateUser={updateUser} />}
@@ -115,7 +118,10 @@ function App() {
       <NavBar user={user} setUser={setUser} />
 
       <Routes>
-        <Route path="/" element={<Home username={user.username} fetchUser={fetchUser}/>} />
+        <Route
+          path="/"
+          element={<Home username={user.username} fetchUser={fetchUser} />}
+        />
         <Route
           path="/authentication"
           element={<Authentication updateUser={updateUser} />}
@@ -166,7 +172,7 @@ function App() {
           }
         />
       </Routes>
-      <Footer />
+      <Bottom />
     </>
   );
 }

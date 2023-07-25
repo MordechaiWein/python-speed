@@ -3,8 +3,6 @@ import PlantCard from "./PlantCard";
 
 function PlantContainer({plants, user}) {
   const navigate = useNavigate()
-
-  debugger
   
   if (!user){
     navigate('/authentication')
