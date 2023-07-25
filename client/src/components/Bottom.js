@@ -3,7 +3,7 @@ import logo from "../assets/images/logo.png";
 function Bottom() {
   return (
     <footer>
-      <img src={logo} />
+      <img src={logo} alt="image"/>
 
       <div className="social-media">
         <h3>Reach us on:</h3>
