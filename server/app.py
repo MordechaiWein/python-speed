@@ -29,7 +29,7 @@ class Signup(Resource):
         return response
 
 
-api.add_resource(Signup, "/signup")
+api.add_resource(Signup, "/api/signup")
 
 
 class Login(Resource):
@@ -45,7 +45,7 @@ class Login(Resource):
             abort(401, "Incorrect Username or Password")
 
 
-api.add_resource(Login, "/login")
+api.add_resource(Login, "/api/login")
 
 
 class Logout(Resource):
@@ -55,7 +55,7 @@ class Logout(Resource):
         return response
 
 
-api.add_resource(Logout, "/logout")
+api.add_resource(Logout, "/api/logout")
 
 
 class AuthorizedSessions(Resource):
@@ -68,7 +68,7 @@ class AuthorizedSessions(Resource):
             abort(401, "Unauthorized")
 
 
-api.add_resource(AuthorizedSessions, "/authorized")
+api.add_resource(AuthorizedSessions, "/api/authorized")
 
 
 class Butterflies(Resource):
@@ -108,7 +108,7 @@ class Butterflies(Resource):
         return response
 
 
-api.add_resource(Butterflies, "/butterflies")
+api.add_resource(Butterflies, "/api/butterflies")
 
 
 class ButterflyByID(Resource):
@@ -151,7 +151,7 @@ class ButterflyByID(Resource):
         return response
 
 
-api.add_resource(ButterflyByID, "/butterflies/<int:id>")
+api.add_resource(ButterflyByID, "/api/butterflies/<int:id>")
 
 
 class Plants(Resource):
@@ -187,7 +187,7 @@ class Plants(Resource):
         return response
 
 
-api.add_resource(Plants, "/plants")
+api.add_resource(Plants, "/api/plants")
 
 
 class PlantByID(Resource):
@@ -230,7 +230,7 @@ class PlantByID(Resource):
         return response
 
 
-api.add_resource(PlantByID, "/plants/<int:id>")
+api.add_resource(PlantByID, "/api/plants/<int:id>")
 
 
 class ButterflyTag(Resource):
@@ -256,7 +256,7 @@ class ButterflyTag(Resource):
         return response
 
 
-api.add_resource(ButterflyTag, "/butterflies/<int:id>/tag")
+api.add_resource(ButterflyTag, "/api/butterflies/<int:id>/tag")
 
 
 # these will be all front end React unique routes

@@ -7,7 +7,7 @@ function NavBar({ user, setUser }) {
 
   const handleLogout = () => {
   
-    fetch("/logout", {
+    fetch("/api/logout", {
       method: "DELETE",
     }).then((res) => {
       if (res.ok) {

@@ -20,7 +20,7 @@ function PlantForm({ addPlant }) {
     },
     validationSchema: formSchema,
     onSubmit: (values) => {
-      fetch("/plants", {
+      fetch("/api/plants", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

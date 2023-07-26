@@ -13,7 +13,7 @@ function PlantDetails() {
   const params = useParams();
 
   useEffect(() => {
-    fetch(`/plants/${params.id}`).then((res) => {
+    fetch(`/api/plants/${params.id}`).then((res) => {
       if (res.ok) {
         res.json().then((p) => setPlant(p));
       } else {
@@ -32,7 +32,7 @@ function PlantDetails() {
         <img src={image} alt="plant image" />
         <h3>Genus & Species:</h3>
         <p>{genus_species}</p>
-        <h3>Conservation Status:</h3>
+        <h3>Growing Zone:</h3>
         <p>{growing_zone}</p>
       </div>
     </>

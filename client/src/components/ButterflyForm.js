@@ -22,7 +22,7 @@ function ButterflyForm({ addButterfly, fetchButterflies }) {
     },
     validationSchema: formSchema,
     onSubmit: (values) => {
-      fetch("/butterflies", {
+      fetch("/api/butterflies", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

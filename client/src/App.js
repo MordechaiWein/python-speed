@@ -33,7 +33,7 @@ function App() {
   }, [user]);
 
   const fetchButterflies = () => {
-    fetch("/butterflies")
+    fetch("/api/butterflies")
       .then((res) => {
         if (res.ok) {
           return res.json();
@@ -50,13 +50,13 @@ function App() {
   //    same as the .then
 
   const fetchPlants = () => {
-    fetch("/plants")
+    fetch("/api/plants")
       .then((res) => res.json())
       .then(setPlants);
   };
 
   const fetchUser = () =>
-    fetch("/authorized").then((res) => {
+    fetch("/api/authorized").then((res) => {
       if (res.ok) {
         res.json().then((data) => {
           setUser(data);

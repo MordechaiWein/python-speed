@@ -22,7 +22,7 @@ function EditingButterfly({updateButterfly, butterfly_edit}) {
     },
     validationSchema: formSchema,
     onSubmit: (values) => {
-      fetch(`/butterflies/${butterfly_edit.id}`, {
+      fetch(`/api/butterflies/${butterfly_edit.id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

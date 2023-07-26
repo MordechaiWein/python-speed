@@ -30,7 +30,7 @@ function ButterflyDetails({ user, handleEdit, deleteButterfly, fetchButterflies 
   };
 
   const fetchTags = () => {
-    fetch(`/butterflies/${params.id}/tag`)
+    fetch(`/api/butterflies/${params.id}/tag`)
       .then((res) => res.json())
       .then((data) => setTags(data));
   };
@@ -41,7 +41,7 @@ function ButterflyDetails({ user, handleEdit, deleteButterfly, fetchButterflies 
 
   const handleTagSubmit = (e) => {
     e.preventDefault();
-    fetch(`/butterflies/${params.id}/tag`, {
+    fetch(`/api/butterflies/${params.id}/tag`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -58,7 +58,7 @@ function ButterflyDetails({ user, handleEdit, deleteButterfly, fetchButterflies 
   const params = useParams();
   const navigate = useNavigate();
   useEffect(() => {
-    fetch(`/butterflies/${params.id}`).then((res) => {
+    fetch(`/api/butterflies/${params.id}`).then((res) => {
       if (res.ok) {
         res.json().then((b) => setButterfly(b));
       } else {
@@ -70,7 +70,7 @@ function ButterflyDetails({ user, handleEdit, deleteButterfly, fetchButterflies 
   }, [params.id]);
 
   const handleDelete = (butterfly) => {
-    fetch(`/butterflies/${butterfly.id}`, {
+    fetch(`/api/butterflies/${butterfly.id}`, {
       method: "DELETE",
     }).then(() => {
       deleteButterfly(butterfly);
