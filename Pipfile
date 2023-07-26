@@ -16,6 +16,8 @@ ipdb = "*"
 faker = "*"
 jsonify = "*"
 flask-bcrypt = "*"
+python-dotenv = "*"
+psycopg2 = "*"
 
 [dev-packages]
 

@@ -3,7 +3,9 @@
 # Standard library imports
 
 # Remote library imports
-from flask import request, make_response, session, jsonify, abort
+
+
+from flask import request, make_response, session, jsonify, abort, render_template
 from flask_restful import Resource
 from werkzeug.exceptions import NotFound
 import ipdb
@@ -11,8 +13,6 @@ import ipdb
 # Local imports
 from config import app, db, api, bcrypt
 from models import User, Butterfly, Plant, Tag
-
-app.secret_key = b"@~xH\xf2\x10k\x07hp\x85\xa6N\xde\xd4\xcd"
 
 
 class Signup(Resource):
@@ -257,6 +257,12 @@ class ButterflyTag(Resource):
 
 
 api.add_resource(ButterflyTag, "/butterflies/<int:id>/tag")
+
+# these will be all front end React unique routes
+@app.route("/")
+
+def index(id=0):
+    return render_template("index.html")
 
 
 if __name__ == "__main__":
