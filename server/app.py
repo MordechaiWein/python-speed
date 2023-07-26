@@ -258,9 +258,18 @@ class ButterflyTag(Resource):
 
 api.add_resource(ButterflyTag, "/butterflies/<int:id>/tag")
 
+
 # these will be all front end React unique routes
 @app.route("/")
-
+@app.route("/authentication")
+@app.route("/butterflies")
+@app.route("/butterflies/:id")
+@app.route("/butterflies/edit/:id")
+@app.route("/butterflies/new")
+@app.route("/plants")
+@app.route("/plants/:id")
+@app.route("/plants/new")
+@app.route("/addtothegarden")
 def index(id=0):
     return render_template("index.html")
 
