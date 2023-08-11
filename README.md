@@ -1,6 +1,6 @@
 # Butterfly Garden App
 
-Butterfly Gardenb App for Phase 4 Project Assignment by Joseph D Smith
+Butterfly Garden App for Phase 4 Project Assignment by Joseph D Smith
 
 https://butterfly-garden-app.onrender.com/
 
