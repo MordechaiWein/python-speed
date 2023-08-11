@@ -154,6 +154,19 @@ class ButterflyByID(Resource):
 api.add_resource(ButterflyByID, "/api/butterflies/<int:id>")
 
 
+class ButterflyTags(Resource):
+    def get(self, n):
+        butterflies = [b for b in Butterfly.query.all()]
+        new_butterflies = [b.to_dict() for b in butterflies if len(b.tags) >= n]
+        response = make_response(new_butterflies, 200)
+        return response
+
+        # >=n
+
+
+api.add_resource(ButterflyTags, "/butterfly_tags/<int:n>")
+
+
 class Plants(Resource):
     def get(self):
         plant_list = [p.to_dict() for p in Plant.query.all()]
@@ -275,4 +288,4 @@ def index(id=0):
 
 
 if __name__ == "__main__":
-    app.run(port=5555, debug=True)
+    app.run(port=8000, debug=True)

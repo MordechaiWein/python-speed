@@ -22,6 +22,7 @@ function Authentication({ updateUser }) {
     },
     validationSchema: formSchema,
     onSubmit: (values, { resetForm }) => {
+      console.log("Form submitted:", values);
       fetch(signUp ? "/api/signup" : "/api/login", {
         method: "POST",
         headers: {
@@ -32,7 +33,7 @@ function Authentication({ updateUser }) {
         if (res.ok) {
           res.json().then((user) => {
             updateUser(user);
-            
+
             navigate("/");
           });
         } else {
@@ -50,11 +51,10 @@ function Authentication({ updateUser }) {
 
   return (
     <div className="authentication">
-
       <h2 style={{ color: "red" }}> {formik.errors.username}</h2>
       {error && <h2 style={{ color: "red" }}> {error}</h2>}
       <h2>Please Log in or Sign up!</h2>
-      
+
       <form onSubmit={formik.handleSubmit}>
         <label>Username</label>
         <input
@@ -84,10 +84,10 @@ function Authentication({ updateUser }) {
         <button type="submit">{signUp ? "Sign Up!" : "Log In!"}</button>
       </form>
       <div className="sign-up">
-      <h2>{signUp ? "Already a member?" : "Not a member?"}</h2>
-      <button type="button" onClick={handleClick}>
-        {signUp ? "Log In!" : "Register now!"}
-      </button>
+        <h2>{signUp ? "Already a member?" : "Not a member?"}</h2>
+        <button type="button" onClick={handleClick}>
+          {signUp ? "Log In!" : "Register now!"}
+        </button>
       </div>
     </div>
   );
