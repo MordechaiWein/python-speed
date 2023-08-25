@@ -358,4 +358,72 @@ ul li {
     margin-right: 10px;
 }
 
+.burger {
+    display: none; /* Hide the burger icon by default */
+    cursor: pointer;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: #EDF1D6;
+    margin: 4px 0;
+    transition: 0.4s;
+}
+
+/* Rotate the bars and change position when menu is open */
+.burger.open .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+}
+
+.burger.open .bar:nth-child(2) {
+    opacity: 0; /* Hide the middle bar */
+}
+
+.burger.open .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -6px);
+}
+
+@media only screen and (max-width: 768px) {
+    .burger {
+        display: block; /* Display the burger icon */
+    }
+
+    /* Show the navigation menu when the burger icon is clicked */
+    .navigation.show {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        right: 0;
+        width: 100%;
+        background-color: #609966;
+        padding: 2rem;
+        transition: transform 0.4s ease-in-out;
+        transform: translateY(-100%);
+        flex-wrap: wrap;
+        align-content: flex-start;
+        align-items: flex-start;
+    }
+    
+    /* Move the menu into view by resetting the transform */
+    .navigation.show.show {
+        transform: translateY(0);
+    }
+    
+    /* Hide the menu when it's not shown */
+    .navigation:not(.show) {
+        display: none;
+    }
+
+        /* Additional adjustments for better mobile menu experience */
+        .navigation a {
+            margin: 10px 0; /* Add vertical spacing between links */
+            padding: 1rem; /* Increase padding for larger clickable area */
+            text-align: center; /* Center-align the text */
+            font-size: 1.2rem; /* Increase font size for better readability */
+        }
+
+}
+
 
