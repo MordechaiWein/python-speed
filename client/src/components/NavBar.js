@@ -18,7 +18,13 @@ function NavBar({ user, setUser }) {
   };
 
   const closeMenu = () => {
-    setIsMenuOpen(false); // Function to close the menu
+    setIsMenuOpen(false);
+    document.body.style.overflow = "auto"; // Enable scrolling when the menu is closed
+  };
+
+  const openMenu = () => {
+    setIsMenuOpen(true);
+    document.body.style.overflow = "hidden"; // Disable scrolling when the menu is open
   };
 
   return (
@@ -26,7 +32,7 @@ function NavBar({ user, setUser }) {
       <div
         className={`burger ${isMenuOpen ? "open" : ""}`}
         id="burger"
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        onClick={isMenuOpen ? closeMenu : openMenu} // Toggle menu open/close
       >
         <div className="bar"></div>
         <div className="bar"></div>

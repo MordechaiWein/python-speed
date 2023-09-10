@@ -392,6 +392,10 @@ ul li {
 
 @media only screen and (max-width: 768px) {
 
+    .butterfly-details img {
+        width: 100%
+    }
+
     .plant-collection h1 {
         padding: 1rem;
         text-align: center;
@@ -433,7 +437,7 @@ ul li {
             margin: 10px 0; /* Add vertical spacing between links */
             padding: 1rem; /* Increase padding for larger clickable area */
             text-align: center; /* Center-align the text */
-            font-size: 1.2rem; /* Increase font size for better readability */
+            font-size: 1rem; /* Increase font size for better readability */
         }
     
         .navWrapper {
@@ -443,6 +447,10 @@ ul li {
 }
 
 @media only screen and (max-width: 425px) {
+
+    footer {
+        padding: 1rem;
+    }
 
 .authentication form input {
     background-color: #fff;

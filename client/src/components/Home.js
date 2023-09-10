@@ -5,6 +5,7 @@ function Home({ username, fetchUser }) {
   useEffect(()=> {
     fetchUser();
   }, [])
+  
 
   return (
     <div className="home">
