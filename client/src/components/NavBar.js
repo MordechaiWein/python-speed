@@ -17,37 +17,9 @@ function NavBar({ user, setUser }) {
     });
   };
 
-  if (!user)
-    return (
-      <div className="navWrapper">
-        <div
-          className={`burger ${isMenuOpen ? "open" : ""}`}
-          id="burger"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          <div className="bar"></div>
-          <div className="bar"></div>
-          <div className="bar"></div>
-        </div>
-        <NavLink to="/">
-          <img src={logo} alt="Logo" />{" "}
-        </NavLink>
-        <div className={`navigation ${isMenuOpen ? "show" : ""}`}>
-          <NavLink
-            className={(navClass) => (navClass.isActive ? "active_link" : "")}
-            to="/"
-          >
-            Home
-          </NavLink>
-          <NavLink
-            className={(navClass) => (navClass.isActive ? "active_link" : "")}
-            to="/authentication"
-          >
-            Login
-          </NavLink>
-        </div>
-      </div>
-    );
+  const closeMenu = () => {
+    setIsMenuOpen(false); // Function to close the menu
+  };
 
   return (
     <div className="navWrapper">
@@ -60,43 +32,64 @@ function NavBar({ user, setUser }) {
         <div className="bar"></div>
         <div className="bar"></div>
       </div>
-      <NavLink to="/">
-        <img src={logo} alt="Logo" />{" "}
+      <NavLink to="/" onClick={closeMenu}>
+        <img src={logo} alt="Logo" />
       </NavLink>
-      <div className="navigation">
+      <div className={`navigation ${isMenuOpen ? "show" : ""}`}>
         <NavLink
           className={(navClass) => (navClass.isActive ? "active_link" : "")}
           to="/"
+          onClick={closeMenu} // Close menu when this link is clicked
         >
           Home
         </NavLink>
-        <NavLink
-          className={(navClass) => (navClass.isActive ? "active_link" : "")}
-          to="/butterflies"
-        >
-          Butterfly Collection
-        </NavLink>
-        <NavLink
-          className={(navClass) => (navClass.isActive ? "active_link" : "")}
-          to="/plants"
-        >
-          Plant Collection
-        </NavLink>
-        <NavLink
-          className={(navClass) => (navClass.isActive ? "active_link" : "")}
-          to="/addtothegarden"
-        >
-          Add to the Garden
-        </NavLink>
-        <NavLink
-          className={(navClass) => (navClass.isActive ? "active_link" : "")}
-          to="/authentication"
-          onClick={handleLogout}
-        >
-          Logout
-        </NavLink>
+        {user && (
+          <>
+            <NavLink
+              className={(navClass) => (navClass.isActive ? "active_link" : "")}
+              to="/butterflies"
+              onClick={closeMenu} // Close menu when this link is clicked
+            >
+              Butterfly Collection
+            </NavLink>
+            <NavLink
+              className={(navClass) => (navClass.isActive ? "active_link" : "")}
+              to="/plants"
+              onClick={closeMenu} // Close menu when this link is clicked
+            >
+              Plant Collection
+            </NavLink>
+            <NavLink
+              className={(navClass) => (navClass.isActive ? "active_link" : "")}
+              to="/addtothegarden"
+              onClick={closeMenu} // Close menu when this link is clicked
+            >
+              Add to the Garden
+            </NavLink>
+            <NavLink
+              className={(navClass) => (navClass.isActive ? "active_link" : "")}
+              to="/authentication"
+              onClick={() => {
+                handleLogout();
+                closeMenu(); // Close menu when this link is clicked
+              }}
+            >
+              <i className="fa-solid fa-right-from-bracket"></i>
+            </NavLink>
+          </>
+        )}
+        {!user && (
+          <NavLink
+            className={(navClass) => (navClass.isActive ? "active_link" : "")}
+            to="/authentication"
+            onClick={closeMenu} // Close menu when this link is clicked
+          >
+            <i className="fa-solid fa-right-to-bracket"></i>
+          </NavLink>
+        )}
       </div>
     </div>
   );
 }
+
 export default NavBar;

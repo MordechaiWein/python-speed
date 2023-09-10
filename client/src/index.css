@@ -11,13 +11,6 @@ body {
         font-weight: 400;
         letter-spacing: 0.025em;
     }
-    
-
-img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
 
 h1 {
     color: #39483a;
@@ -27,6 +20,7 @@ h1 {
 span {
     font-weight: normal;
 }
+
 
 /* Nav */
 
@@ -84,7 +78,7 @@ label {
 }
 
 .navWrapper img, footer img {
-    max-width: 15em;
+    max-width: 200px;
     cursor: pointer;
 }
 
@@ -151,8 +145,8 @@ label {
 }
 
 .home section div img {
-    height: 450px;
-    width: 300px;
+    max-height: 450px;
+    max-width: 300px;
     border-radius: 20px;
 }
 
@@ -211,8 +205,8 @@ label {
 }
 
 .image-container {
-    height: 200px;
-    width: 300px;
+    max-height: 200px;
+    max-width: 300px;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     overflow: hidden; /* Ensure the image stays within the container */
@@ -251,6 +245,10 @@ label {
     padding-left: 2rem;
   }
 
+  .tag-div {
+    padding-bottom: 2rem;
+  }
+
   .edit-btn:hover {
     background-color: orange;
   }
@@ -278,7 +276,7 @@ label {
 }
 
 .edit-butterfly .cancel-btn {
-    width: 110px;
+    max-width: 110px;
     align-self: center;
 }
 
@@ -342,9 +340,17 @@ footer {
     color: white;
 }
 
-.social-media, .social-media ul {
+
+.social-media{
     display: flex;
+    flex-direction: column;
 }
+
+.social-media ul {
+    display: flex;
+    gap: 1rem;
+}
+
 
 .social-media h3 {
     margin-right: 10px;
@@ -385,6 +391,11 @@ ul li {
 }
 
 @media only screen and (max-width: 768px) {
+
+    .plant-collection h1 {
+        padding: 1rem;
+        text-align: center;
+    }
     .burger {
         display: block; /* Display the burger icon */
     }
@@ -394,9 +405,10 @@ ul li {
         display: flex;
         flex-direction: column;
         position: absolute;
-        top: 80px;
+        top: 105px;
         right: 0;
         width: 100%;
+        height: 100%;
         background-color: #609966;
         padding: 2rem;
         transition: transform 0.4s ease-in-out;
@@ -423,7 +435,65 @@ ul li {
             text-align: center; /* Center-align the text */
             font-size: 1.2rem; /* Increase font size for better readability */
         }
+    
+        .navWrapper {
+            flex-direction: row-reverse;
+        }
 
 }
 
+@media only screen and (max-width: 425px) {
 
+.authentication form input {
+    background-color: #fff;
+    max-width: 255px;
+}
+
+.home section div {
+    flex-direction: column-reverse;
+    padding: 0;
+    align-items: center;
+}
+
+.butterfly-collection, .plant-collection {
+    padding: 0;
+    padding-bottom: 1rem;
+}
+
+.butterfly-collection h1 , .plant-collection h1 {
+    padding-bottom: 0;
+}
+
+edit-butterfly form input, .plant-form form input, .butterfly-form form input, .authentication form input {
+    width: 350px;
+}
+h1, h3{
+    text-align: center;
+    padding-bottom: 0;
+}
+
+.home p {
+    padding: 1rem;
+}
+
+.home {
+    padding: 0;
+}
+
+}
+
+@media only screen and (max-width: 375px) {
+
+
+.navWrapper img, footer img {
+    max-width: 150px;
+}
+
+edit-butterfly form input, .plant-form form input, .butterfly-form form input, .authentication form input {
+    max-width: 300px;
+}
+
+footer {
+    font-size: .75rem;
+}
+}

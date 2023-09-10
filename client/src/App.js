@@ -101,7 +101,7 @@ function App() {
 
   if (!user)
     return (
-      <>
+      <div className="app">
         <NavBar user={user} setUser={setUser} />
         <Routes>
           <Route path="/" element={<Home fetchUser={fetchUser} />} />
@@ -110,11 +110,11 @@ function App() {
             element={<Authentication updateUser={updateUser} />}
           />
         </Routes>
-      </>
+      </div>
     );
 
   return (
-    <>
+    <div className="app">
       <NavBar user={user} setUser={setUser} />
 
       <Routes>
@@ -173,7 +173,7 @@ function App() {
         />
       </Routes>
       <Bottom />
-    </>
+    </div>
   );
 }
 export default App;
