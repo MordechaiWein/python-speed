@@ -14,6 +14,10 @@ import ipdb
 from config import app, db, api, bcrypt
 from models import Language
 
+@app.errorhandler(404)
+def not_found(e):
+    return render_template("index.html")
+
 class Speech(Resource):
     
     def get(self):
