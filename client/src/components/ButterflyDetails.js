@@ -67,7 +67,7 @@ function ButterflyDetails({ user, handleEdit, deleteButterfly, fetchButterflies 
     });
     fetchTags();
     fetchButterflies();
-  }, [params.id]);
+  });
 
   const handleDelete = (butterfly) => {
     fetch(`/api/butterflies/${butterfly.id}`, {
@@ -95,7 +95,7 @@ function ButterflyDetails({ user, handleEdit, deleteButterfly, fetchButterflies 
             <h3>
               Name: <span>{name}</span>
             </h3>
-            <img src={image} alt="butterfly image" />
+            <img src={image} alt="butter" />
             <h3>
               Genus & Species: <span>{genus_species}</span>
             </h3>

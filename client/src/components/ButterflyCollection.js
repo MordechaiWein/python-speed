@@ -7,7 +7,7 @@ function ButterflyContainer({butterflies, user, fetchButterflies}) {
 
     useEffect(() => {
         fetchButterflies();
-    }, [])
+    })
     
     if (!user){
         navigate('/authentication')
